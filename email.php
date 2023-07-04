@@ -1,17 +1,20 @@
 <?php
-     if (isset($_POST['submit'])) {
-        $name = $_REQUEST['gname'];
-        $number = $_REQUEST['gmail'];
-        $message = $_REQUEST['message'];
-        $cname = $_REQUEST['cname'];
-        $cage = $_REQUEST['age'];
-
-      // Set your email address where you want to receive emails. 
-       $to = 'burhanj888@gmail.com';
-       $subject = 'Contact Request From Website';
-       $headers = "From: ".$name." <".$email."> \r\n";
-       $send_email = mail($to,$subject,$message,$headers);
-
-       echo ($send_email) ? 'success' : 'error';
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+       $name = $_POST["name"];
+       $email = $_POST["email"];
+       $message = $_POST["message"];
+     
+       $to = "burhanj888@gmail.com"; // Replace with your email address
+       $subject = "New Contact Form Submission";
+       $headers = "From: $email" . "\r\n" .
+                  "Reply-To: $email" . "\r\n" .
+                  "X-Mailer: PHP/" . phpversion();
+     
+       if (mail($to, $subject, $message, $headers)) {
+         echo "<p>Thank you for contacting us, $name! Your message has been sent successfully.</p>";
+       } else {
+         echo "<p>Oops! Something went wrong. Please try again later.</p>";
+       }
+     
 
   }?>

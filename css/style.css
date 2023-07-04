@@ -211,6 +211,19 @@ h6,
         font-size: 30px;
         font-weight: 600;
     }
+
+    .navbar-brand {
+        max-width: 250px;
+    }
+
+    .class-logo {
+        max-width: 150px;
+        height: auto;
+    }
+
+    /* .img-fluid {
+        max-width: 150px;
+    } */
 }
 
 .header-carousel .owl-nav {
